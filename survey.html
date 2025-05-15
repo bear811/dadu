@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>about us</title>
+  <link rel="stylesheet" href="survey.css">
+  <style>
+    body.dark-mode {
+      background-color: #121212 !important;
+      color: #e0e0e0 !important;
+    }
+    body.dark-mode header,
+    body.dark-mode footer {
+      background-color: #222 !important;
+      color: #eee !important;
+    }
+    body.dark-mode a,
+    body.dark-mode p,
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode h3,
+    body.dark-mode li {
+      color: #ddd !important;
+    }
+    body.dark-mode img {
+      filter: brightness(0.85);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="back-link" href="homepage.html">&#8592;</a>
+    <h2>KINDLY RESPONSE TO THIS SURVEY</h2>
+  <button id="darkModeToggle" aria-label="Toggle Dark Mode" style="position: fixed; top: 10px; right: 10px; z-index: 1000;">🌓</button>
+
+  </header>
+
+  <div id="fom">
+    <form>
+      <label>1. Are you Tanzanian?</label>
+      <input type="radio" name="tanzanian">Yes<br>
+      <input type="radio" name="tanzanian">No<br><br>
+
+      <label>2. Your age: </label>
+      <input type="checkbox" name="age">18-25<br>
+      <input type="checkbox" name="age">26-40<br>
+      <input type="checkbox" name="age">40+<br><br>
+
+      <label>3. Which time duration takes you to change oil?</label>
+      <input type="radio" name="oil">2-6 months<br>
+      <input type="radio" name="oil">1 year<br>
+      <input type="radio" name="oil">I don’t know<br><br>
+
+      <label>4. How rough-roads affect your car?</label>
+      <input type="text" placeholder="Share with us here!"><br><br>
+
+      <label>5. Recommendations and Suggestions</label>
+      <input type="text" placeholder="Feel free to share"><br><br>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const tanzanian = document.querySelector('input[name="tanzanian"]:checked');
+      const age = document.querySelectorAll('input[name="age"]:checked');
+      const oil = document.querySelector('input[name="oil"]:checked');
+      const roadEffect = document.querySelector('input[placeholder="Share with us here!"]');
+      const suggestions = document.querySelector('input[placeholder="Feel free to share"]');
+
+      let errors = [];
+
+      if (!tanzanian) errors.push("Please answer if you are Tanzanian.");
+      if (age.length === 0) errors.push("Please select at least one age group.");
+      if (!oil) errors.push("Please choose how often you change oil.");
+      if (!roadEffect.value.trim()) errors.push("Please describe how rough roads affect your car.");
+      if (!suggestions.value.trim()) errors.push("Please enter your suggestions.");
+
+      if (errors.length > 0) {
+        alert("Form incomplete:\n\n" + errors.join("\n"));
+      } else {
+        alert("Form submitted successfully!");
+      }
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('darkModeToggle');
+      if (!toggleBtn) return;
+
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+          localStorage.setItem('darkMode', 'enabled');
+        } else {
+          localStorage.setItem('darkMode', 'disabled');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

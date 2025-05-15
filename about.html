@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>about us</title>
+  <link rel="stylesheet" href="about.css">
+
+  <style>
+    body.dark-mode {
+      background-color: #121212 !important;
+      color: #e0e0e0 !important;
+    }
+    body.dark-mode header,
+    body.dark-mode footer {
+      background-color: #222 !important;
+      color: #eee !important;
+    }
+    body.dark-mode a,
+    body.dark-mode p,
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode h3,
+    body.dark-mode li {
+      color: #ddd !important;
+    }
+    body.dark-mode img {
+      filter: brightness(0.85);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="back-link" href="homepage.html">&#8592;</a>
+    <h1>ABOUT US</h1>
+    <button id="darkModeToggle" aria-label="Toggle Dark Mode" style="position: fixed; top: 10px; right: 10px; z-index: 1000;">🌓</button>
+  </header>
+
+  <div class="container">
+    <div class="left">
+      <br><br>
+      <h2>BEAR PORTIFOX - HOME OF YOUR DREAM CARS</h2>
+      <p>Our portifolio enable our customers to see their dream cars and assist the logistics at very friendly price.</p>
+      <p>We bring you to the world of modern high-speeded cars like tesla, range rover and toyota.</p>
+      <h3>Our Aim</h3>
+      <p>To assist every one to have best modern cars for our well-being. Your journey to expensive life is accelerated with us</p>
+      <h3>Our Branches</h3>
+      <ul>
+        <li>Oysterbay Dar-es-salaam</li>
+        <li>Kirumba Mwanza</li>
+        <li>Kisasa Dodoma</li>
+        <li>Usa-River Arusha</li>
+        <li>Zanzibar</li>
+      </ul>         
+    </div>
+
+    <div class="right">
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <img src="im4.jpeg" style="width:100%" alt="image">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy;BEAR 2025
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('darkModeToggle');
+      if (!toggleBtn) return;
+
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+          localStorage.setItem('darkMode', 'enabled');
+        } else {
+          localStorage.setItem('darkMode', 'disabled');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

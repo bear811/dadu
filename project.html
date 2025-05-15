@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="port.css" />
+
+  <style>
+    body.dark-mode {
+      background-color: #121212 !important;
+      color: #e0e0e0 !important;
+    }
+    body.dark-mode header,
+    body.dark-mode footer {
+      background-color: #222 !important;
+      color: #eee !important;
+    }
+    body.dark-mode a,
+    body.dark-mode p,
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode h3,
+    body.dark-mode li,
+    body.dark-mode button {
+      color: #ddd !important;
+    }
+    body.dark-mode .car-gallery img {
+      filter: brightness(0.85);
+    }
+    body.dark-mode #carModal {
+      background-color: #333 !important;
+      color: #f0f0f0;
+    }
+    body.dark-mode button {
+      background-color: #444;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <button id="darkModeToggle" aria-label="Toggle Dark Mode" style="position: fixed; top: 10px; right: 10px; z-index: 1000;">🌓</button>
+    <a class="back-link" href="homepage.html">&#8592;</a>
+    <div class="news-ticker">
+      <p>
+        WELCOME TO OUR CAR PORTFOLIO. PLEASE BE FREE TO CHOOSE YOUR DREAM CAR AND WE ARE HERE TO SERVE YOU. THERE ARE SEVERAL CAR BRANDS INCLUDING TOYOTA, BMW, MERCEDEIS BENZ, TESLA, AND ALL OF YOUR DREAMS.
+      </p>
+    </div>
+  </header>
+
+  <div class="car-gallery">
+    <img src="im1.jpeg" class="car-img" alt="Toyota GXR-5" data-name="Toyota GXR-5" data-color="Red" data-maker="Toyota" data-price="Tsh 200,000,000" />
+    <img src="im2.jpeg" class="car-img" alt="Mercedeis e-class" data-name="Mercedeis e-class" data-color="Black" data-maker="Toyota" data-price="Tsh 108,000,000" />
+    <img src="im14.jpeg" class="car-img" alt="Cyber Track" data-name="Cyber Track" data-color="Grey" data-maker="Tesla" data-price="Tsh 1,000,000,000" />
+    <img src="im10.jpeg" class="car-img" alt="Prado new model 2024" data-name="Prado new model 2024" data-color="White" data-maker="Toyota" data-price="Tsh 400,000,000" />
+    <img src="im18.jpeg" class="car-img" alt="Subaru Forester" data-name="Subaru Forester" data-color="Black" data-maker="Toyota" data-price="Tsh 35,000,000" />
+    <img src="im15.jpeg" class="car-img" alt="Toyota Corolla" data-name="Toyota Corolla" data-color="Black" data-maker="Toyota" data-price="Tsh 18,000,000" />
+    <img src="im22.jpeg" class="car-img" alt="Benz c-class" data-name="Benz c-class" data-color="light Grey" data-maker="Toyota" data-price="Tsh 58,000,000" />
+    <img src="im19.jpeg" class="car-img" alt="Toyota v8" data-name="Toyota v8" data-color="Grey" data-maker="Toyota" data-price="Tsh 350,000,000" />
+    <img src="im20.jpeg" class="car-img" alt="X3" data-name="X3" data-color="White" data-maker="BMW" data-price="Tsh 38,000,000" />
+    <img src="im5.jpeg" class="car-img" alt="Land-dex" data-name="Land-dex" data-color="Grey" data-maker="Tesla" data-price="Tsh 900,000,000" />
+    <img src="im3.jpeg" class="car-img" alt="Mazda x3" data-name="Mazda x3" data-color="Black" data-maker="Mazda" data-price="Tsh 118,000,000" />
+    <img src="im16.jpeg" class="car-img" alt="Toyota GXR" data-name="Toyota GXR" data-color="White" data-maker="Toyota" data-price="Tsh 800,000,000" />
+    <img src="im21.jpeg" class="car-img" alt="Subaru Forester" data-name="Subaru Forester" data-color="Black" data-maker="Toyota" data-price="Tsh 35,000,000" />
+    <img src="im13.jpeg" class="car-img" alt="Mazda x5" data-name="Mazda x5" data-color="White" data-maker="Mazda" data-price="Tsh 618,000,000" />
+    <img src="im12.jpeg" class="car-img" alt="Rav-4 new model" data-name="Rav-4 new model" data-color="Black" data-maker="Toyota" data-price="Tsh 28,000,000" />
+    <img src="im17.jpeg" class="car-img" alt="Toyota 4x4" data-name="Toyota 4x4" data-color="Black" data-maker="Toyota" data-price="Tsh 58,000,000" />
+    <img src="im23.png" class="car-img" alt="Ford Ranger" data-name="Ford Ranger" data-color="Black" data-maker="Ford" data-price="Tsh 78,000,000" />
+    <img src="im24.png" class="car-img" alt="bear" data-name="bear" data-color="Red" data-maker="Tesla" data-price="Tsh 189,000,000" />
+  </div>
+
+  <div id="modalOverlay"></div>
+  <div id="carModal">
+    <h3 id="carName"></h3>
+    <p><strong>Color:</strong> <span id="carColor"></span></p>
+    <p><strong>Maker:</strong> <span id="carMaker"></span></p>
+    <p><strong>Price:</strong> <span id="carPrice"></span></p>
+    <button type="button" onclick="closeModal()">Close</button>
+  </div>
+
+  <footer>&copy; BEAR 2025</footer>
+
+  <!-- Car modal JS -->
+  <script>
+    const images = document.querySelectorAll('.car-img');
+    const modal = document.getElementById('carModal');
+    const overlay = document.getElementById('modalOverlay');
+
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        document.getElementById('carName').textContent = img.dataset.name;
+        document.getElementById('carColor').textContent = img.dataset.color;
+        document.getElementById('carMaker').textContent = img.dataset.maker;
+        document.getElementById('carPrice').textContent = img.dataset.price;
+        modal.style.display = 'block';
+        overlay.style.display = 'block';
+      });
+    });
+
+    function closeModal() {
+      modal.style.display = 'none';
+      overlay.style.display = 'none';
+    }
+
+    overlay.addEventListener('click', closeModal);
+  </script>
+
+  <!-- Global dark mode toggle using localStorage -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('darkModeToggle');
+      if (!toggleBtn) return;
+
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+          localStorage.setItem('darkMode', 'enabled');
+        } else {
+          localStorage.setItem('darkMode', 'disabled');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

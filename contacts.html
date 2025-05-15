@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="contacts.css" />
+
+  <style>
+    body.dark-mode {
+      background-color: #121212 !important;
+      color: #e0e0e0 !important;
+    }
+    body.dark-mode header,
+    body.dark-mode footer {
+      background-color: #222 !important;
+      color: #eee !important;
+    }
+    body.dark-mode a,
+    body.dark-mode p,
+    body.dark-mode h1,
+    body.dark-mode h2,
+    body.dark-mode li {
+      color: #ddd !important;
+    }
+    body.dark-mode img {
+      filter: brightness(0.85);
+    }
+    body.dark-mode iframe {
+      filter: invert(0.9) hue-rotate(180deg);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="back-link" href="homepage.html">&#8592;</a>
+    <h1>OUR CONTACTS</h1>
+    <button id="darkModeToggle" aria-label="Toggle Dark Mode" style="position: fixed; top: 10px; right: 10px; z-index: 1000;">🌓</button>
+  </header>
+
+  <p>Bear Portfox brings you modern cars at friendly prices. We are very grateful to serve our customers.</p>
+  <p>Please follow and contact us through the following platforms:</p>
+
+
+  <map name="socialmap">
+    <area shape="rect" coords="0,0,100,100" href="https://x.com/bearportfox_tz" alt="X (Twitter)" target="_blank" rel="noopener noreferrer" />
+    <area shape="rect" coords="110,0,210,100" href="https://instagram.com/officialbearportfox_tz" alt="Instagram" target="_blank" rel="noopener noreferrer" />
+    <area shape="rect" coords="220,0,320,100" href="https://facebook.com/bearportfox_tz" alt="Facebook" target="_blank" rel="noopener noreferrer" />
+  </map>
+
+  <!-- Contact List -->
+  <form id="fom">
+    <ul>
+      <li><img src="x.png" alt="X" /> @bearportfox_tz</li>
+      <li><img src="insta.jpeg" alt="Instagram" /> officialbearportfox_tz</li>
+      <li><img src="facebook.png" alt="Facebook" /> bearportfox_tz</li>
+      <li><img src="whatsapp.jpeg" alt="Whatsapp" /> 0786356272</li>
+      <li><img src="google.jpeg" alt="Google" /> www.bearportfox_tz.com</li>
+      <li><img src="gmail.jpeg" alt="Email" /> bearportfox_tz@gmail.com</li>
+    </ul>
+  </form>
+
+  <!-- Iframe Section -->
+  <h2>Find Us on Google Maps</h2>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2799153574!2d-74.25986784165393!3d40.697670063655335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDQyJzU5LjYiTiA3NMKwMTUnMzYuOSJX!5e0!3m2!1sen!2sus!4v1631293198309!5m2!1sen!2sus"
+    width="600"
+    height="450"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+  ></iframe>
+
+  <footer>&copy; BEAR 2025</footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('darkModeToggle');
+      if (!toggleBtn) return;
+
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+      }
+
+      toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+          localStorage.setItem('darkMode', 'enabled');
+        } else {
+          localStorage.setItem('darkMode', 'disabled');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
