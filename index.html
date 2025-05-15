@@ -1,0 +1,116 @@
+<!doctype html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>bear</title>
+    <link rel="stylesheet" href="home.css" />
+    <style>
+      /* Internal dark mode styles */
+      body.dark-mode {
+        background-color: #121212 !important;
+        color: #e0e0e0 !important;
+      }
+      body.dark-mode header,
+      body.dark-mode #nav-bar,
+      body.dark-mode footer {
+        background-color: #222 !important;
+        color: #eee !important;
+      }
+      body.dark-mode a,
+      body.dark-mode p,
+      body.dark-mode h1,
+      body.dark-mode h2,
+      body.dark-mode h3,
+      body.dark-mode li,
+      body.dark-mode button {
+        color: #ddd !important;
+      }
+      body.dark-mode #nav-bar button {
+        background-color: #555 !important;
+        color: #eee !important;
+      }
+      body.dark-mode .logos img {
+        filter: brightness(0.8);
+      }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>BEAR PORTIFOX</h1>
+        <img src="im9.jpeg" alt="image" />
+    </header>
+
+    <div class="logos">
+        <img src="im4.jpeg" alt="image" />
+        <img src="im7.jpeg" alt="image" />
+        <img src="im8.jpeg" alt="image" />
+        <img src="im11.png" alt="image" />
+        <button id="darkModeToggle" aria-label="Toggle Dark Mode" 
+            style="position: fixed; top: 10px; right: 10px; z-index: 1000;">🌓 dark/light</button>
+    </div>
+
+    <div id="nav-bar">
+        <button onclick="#">HOME</button>
+        <button onclick="location.href='about.html'">ABOUT US</button>
+        <button onclick="location.href='project.html'">PORTIFOLIO</button>
+        <button onclick="location.href='contacts.html'">CONTACTS</button>
+        <button onclick="location.href='survey.html'">SURVEY</button>
+    </div>
+
+    <div id="centered">
+        <img src="im24.png" alt="image" />
+    </div>
+
+    <footer>
+        &copy;BEAR 2025
+    </footer>
+
+<script>
+    // Greeting function on page load
+    window.onload = function () {
+        const greetingDiv = document.createElement("div");
+        greetingDiv.id = "greeting";
+        greetingDiv.style.textAlign = "center";
+        greetingDiv.style.fontSize = "24px";
+        greetingDiv.style.margin = "20px";
+        greetingDiv.style.fontFamily = "'Trebuchet MS', sans-serif";
+
+        const hour = new Date().getHours();
+        let greetingText = "Welcome!";
+        if (hour < 12) {
+            greetingText = "Good Morning!";
+        } else if (hour < 18) {
+            greetingText = "Good Afternoon!";
+        } else {
+            greetingText = "Good Evening!";
+        }
+
+        greetingDiv.textContent = greetingText;
+        document.body.insertBefore(greetingDiv, document.getElementById("nav-bar"));
+    };
+
+    // Dark mode toggle with persistence
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleBtn = document.getElementById('darkModeToggle');
+        if (!toggleBtn) return;
+
+        // Apply saved mode
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
